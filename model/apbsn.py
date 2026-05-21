@@ -48,6 +48,9 @@ class APBSNModel(BaseModel):
         self.scheduler.step()
         self.iter += 1
 
+        self.writer.add_scalar('Loss/train', self.loss.item(), self.iter)
+        self.writer.add_scalar('LR', self.optimizer.param_groups[0]['lr'], self.iter)
+
     def validation_step(self, data):
         input = data['L'].to(self.device) * 255.
         b, c, h, w = input.shape

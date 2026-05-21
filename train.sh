@@ -1,39 +1,17 @@
 #!/bin/bash
 
+PROJECT_ROOT=$(pwd)
 experiment_home_dir="experiments"
-config="tbsn_sidd.json"
+config="tbsn_confocal_512.json"
 
-experiment_name=$(python train/experiment_name.py --config option/${config})
+experiment_name=$(python ${PROJECT_ROOT}/train/experiment_name.py --config ${PROJECT_ROOT}/option/${config})
 #experiment_name='test'
 
-experiment_dir="${experiment_home_dir}/${experiment_name}"
+experiment_dir="${PROJECT_ROOT}/${experiment_home_dir}/${experiment_name}"
 echo "experiment dir: ${experiment_dir}"
 
-if [ ! -d "${experiment_home_dir}" ]
-then
-  mkdir "${experiment_home_dir}"
-fi
-
-if [ ! -d "${experiment_dir}" ]
-then
-  mkdir "${experiment_dir}"
-else
-  echo "experiment dir exists"
-fi
-
-cp -r "dataset" "${experiment_dir}"
-cp -r "model" "${experiment_dir}"
-cp -r "network" "${experiment_dir}"
-cp -r "option" "${experiment_dir}"
-cp -r "train" "${experiment_dir}"
-cp -r "util" "${experiment_dir}"
-cp -r "validate" "${experiment_dir}"
-
-if [ ! -d "${experiment_dir}/log" ]
-then
-  mkdir "${experiment_dir}/log"
-fi
+mkdir -p "${experiment_dir}/log"
 
 cd ${experiment_dir}
-export PYTHONPATH=$PWD:$PYTHONPATH
-python train/base.py --config option/${config}
+export PYTHONPATH=${PROJECT_ROOT}:$PYTHONPATH
+python ${PROJECT_ROOT}/train/base.py --config ${PROJECT_ROOT}/option/${config}

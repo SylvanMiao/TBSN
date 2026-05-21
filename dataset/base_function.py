@@ -7,7 +7,7 @@ hostname = socket.gethostname()
 if 'ubuntu' == hostname: # ubuntu
     dataset_path = '/home/nagejacob/Documents/datasets'
 else: # hpc
-    dataset_path = '/mnt/ssd0/anaconda3/lijunyi/datasets'
+    dataset_path = '/home/zhuosiyan/MiaoYe/DATASET/T3'
 
 # c, h, w numpy
 def _aug_np3(img, flip_h, flip_w, transpose):

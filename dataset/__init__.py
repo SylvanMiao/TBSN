@@ -1,2 +1,3 @@
 from dataset.dnd import DNDBenchmarkTrainDataset, DNDBenchmarkPNGANDataset
 from dataset.sidd import SIDDMediumTrainDataset, SIDDValidationDataset, SIDDBenchmarkDataset
+from dataset.confocal import ConfocalTrainDataset

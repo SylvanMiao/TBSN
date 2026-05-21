@@ -2,6 +2,7 @@ from abc import abstractmethod
 import os
 import torch
 from torch.nn.parallel import DataParallel, DistributedDataParallel
+from torch.utils.tensorboard import SummaryWriter
 from util.build import build
 from util.io import log
 
@@ -10,6 +11,7 @@ class BaseModel():
         self.opt = opt
         self.iter = 0 if 'iter' not in opt else opt['iter']
         self.networks = {}
+        self.writer = SummaryWriter(log_dir='tensorboard')
         for network_opt in opt['networks']:
             Net = getattr(__import__('network'), network_opt['type'])
             net = build(Net, network_opt['args'])

@@ -3,7 +3,7 @@
     "model": "APBSNModel",
     "pd_a": 2,
     "pd_b": 2,
-    "R3": true,
+    "R3": false,
     "R3_T": 8,
     "R3_p": 0.16,
     // net

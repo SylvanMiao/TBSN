@@ -37,7 +37,7 @@ from util.option import parse
 def r3_refine(net, noisy_input, initial_denoised, R3_T, R3_p):
     """R3 (Random Replacement Refinement): run T iterations, each time replacing
     random pixels with the original noisy input, feed through the network, and
-    average all results."""
+    average all results. Matches APBSNModel.validation_step R3 behavior."""
     b, c, h, w = noisy_input.shape
     denoised = torch.empty(b, c, h, w, R3_T, device=noisy_input.device)
     for t in range(R3_T):

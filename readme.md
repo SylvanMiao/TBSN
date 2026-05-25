@@ -34,6 +34,7 @@ python validate/inference.py \
     --checkpoint path/to/checkpoint.pth \
     --input noisy.tif \
     --output denoised.tif
+    --tile 0
 
 # 分块推理（图尺寸 > 训练 patch_size，如 1024×1024 图用 64×64 模型）
 python validate/inference.py \

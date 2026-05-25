@@ -1,12 +1,12 @@
 {
-    // model
+
     "model": "APBSNModel",
     "pd_a": 2,
     "pd_b": 2,
     "R3": true,
-    "R3_T": 8,
+    "R3_T": 4,
     "R3_p": 0.16,
-    // net
+
     "networks": [{
         "name": "bsn",
         "type": "TBSN",
@@ -15,7 +15,7 @@
             "out_ch": 1
         }
     }],
-    // datasets
+
     "train_dataset": {
         "type": "ConfocalTrainDataset",
         "args": {
@@ -25,7 +25,7 @@
         "batch_size": 1
     },
     "validation_datasets": [],
-    // training parameters
+
     "lr": 3e-4,
     "print_every": 100,
     "save_every": 5000,
